@@ -2,7 +2,7 @@
 
 `upstream/` es un submódulo de **[manoloGith/deckcraft](https://github.com/manoloGith/deckcraft)**,
 un fork de `storytold/deckcraft`, en la rama **`dexcraft/android`**: el `main` de upstream (DeckCraft
-0.19.0, `e86c25a`) más cuatro commits que DexDeckCraft necesita en Android. En escritorio y en la
+0.19.0, `e86c25a`) más seis commits que DexDeckCraft necesita en Android. En escritorio y en la
 web no cambia nada: lo nuevo está apagado por defecto o solo actúa en Android.
 
 | Cambio | Por qué |
@@ -10,6 +10,7 @@ web no cambia nada: lo nuevo está apagado por defecto o solo actúa en Android.
 | Carpetas de fuentes de Android (`crates/fonts/src/fontdb.rs`: `/system/fonts` y `/product/fonts`) | Android guarda ahí sus fuentes (Roboto, Noto, CJK, árabe, hebreo, tailandés…) y no tiene fontconfig. Sin esto las diapositivas solo tendrían las fuentes incrustadas. |
 | «Ayuda ▸ Buscar actualizaciones» en Android (`crates/ui-egui/src/app/commands.rs`, dos commits) | La autoactualización de escritorio no sirve para una app Android: dice que la actualiza la tienda o el instalador. |
 | Selectores que responden más tarde (`Services::picked_later`, `crates/ui-egui/src/app/files.rs`) | DeckCraft espera la respuesta de `pick_open` y `pick_save` en el hilo de la interfaz. En Android el selector es otra actividad y la pausa de la actividad espera a ese hilo: se colgaría. Con `picked_later`, el selector se abre, devuelve `None`, y cuando llega la ruta DeckCraft vuelve a ejecutar lo que lo pidió (Abrir, Guardar como, exportar, insertar imagen, audio o vídeo, cambiar imagen, reutilizar diapositivas, temas, comparar, rellenos de imagen, álbum de fotos). Genérico y con tests (`picked_later_tests.rs`): se podría proponer a storytold. |
+| Papel oscuro (`crates/render/src/dark_paper.rs`, `RenderOpts::dark_paper`; `crates/ui-egui/src/dark_paper.rs`, dos commits) | En el tema oscuro la diapositiva era un bloque blanco. Con `dark_paper::set` el host pide papel gris oscuro: en las diapositivas de fondo blanco, los grises casi blancos pasan a papel y los casi negros a tinta, en el único sitio donde el renderizador crea los colores. Las imágenes, los colores, las diapositivas de fondo de color y lo que hay dentro de una forma o celda con relleno propio se quedan como están. Solo en el editor (lienzo, miniaturas, patrones): exportar, imprimir y la presentación no lo usan, y la presentación no cambia. Con el lienzo oscuro del mismo gris, la diapositiva lleva un borde. Apagado por defecto, con tests. |
 | Enganche bajo la cinta (`Services::below_ribbon`, `crates/ui-egui/src/app.rs`) | Para dibujar las pestañas de presentaciones de craft-android entre la cinta y las diapositivas. Genérico: el host dibuja lo que quiera y usa los comandos de la app. Con test (kittest). |
 
 Como en GridCraft y WordCraft, **no hacen falta los shims de `rfd` y `arboard`**: la interfaz de

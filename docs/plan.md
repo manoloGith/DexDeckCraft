@@ -21,6 +21,7 @@ dispositivo entre ellas. La lista de pruebas en el dispositivo está en [pruebas
 | Autoguardado | AutoRecuperación cada minuto (configurable) | Igual; además se escribe al perder el foco |
 | Hardware | Sonido con cpal; vídeo decodificado por software (craft-video) | cpal con AAudio; el mismo decodificador |
 | Idioma y tema | Interfaz solo en inglés; tema claro u oscuro, sin «como el sistema» | Igual; el primer arranque toma el tema del sistema |
+| Papel oscuro | La diapositiva siempre en sus colores (blanca en el tema oscuro) | Papel oscuro de craft-android en el tema oscuro, como las demás apps Dex (0.1.1) |
 
 ## Fases
 
@@ -66,3 +67,6 @@ vídeo, la presentación a pantalla completa y la impresión interceptada.
   arranque y después manda el botón Claro/Oscuro de la barra de título.
 - **Interfaz en inglés**, como DeckCraft.
 - **«Acerca de»** es el de DeckCraft, sin cambios.
+- **Papel oscuro (0.1.1).** Con el tema oscuro, las diapositivas de fondo blanco se ven en gris
+  oscuro con texto gris claro, solo en el editor. Sigue al botón Claro/Oscuro: no es una opción
+  aparte. Un texto negro sobre una forma sin relleno encima de una imagen clara pasa a gris claro.

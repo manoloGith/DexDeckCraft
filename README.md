@@ -14,7 +14,12 @@ añade una capa de plataforma Android, la misma que usan
 
 ![DexDeckCraft con la presentación de ejemplo](docs/images/escritorio-ejemplo.png)
 
-> Estado: **0.1.0, sin probar aún en un dispositivo**. Todas las fases del
+En el tema oscuro, las diapositivas de fondo blanco se ven sobre papel gris oscuro, como en las
+demás apps Dex:
+
+![DexDeckCraft en el tema oscuro](docs/images/escritorio-oscuro.png)
+
+> Estado: **0.1.1, sin probar aún en un dispositivo**. Todas las fases del
 > [plan](docs/plan.md) están hechas y comprobadas hasta donde se puede sin dispositivo (tests,
 > la interfaz en una ventana de escritorio, comprobación de tipos para Android y el APK de la CI).
 > La lista de lo que hay que probar en el dispositivo está en [docs/pruebas.md](docs/pruebas.md).

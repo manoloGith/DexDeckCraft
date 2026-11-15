@@ -21,6 +21,16 @@ otras apps Dex no tienen, así que son los que más conviene mirar.
 - [ ] El primer arranque sale en claro u oscuro según el sistema; el botón Claro/Oscuro de la barra
       de título lo cambia y se recuerda.
 
+## 1b. Papel oscuro (0.1.1)
+- [ ] Con el tema oscuro, una diapositiva de fondo blanco se ve en gris oscuro con el texto gris
+      claro, con un borde que la separa del fondo; las miniaturas igual.
+- [ ] Las imágenes, los degradados, las formas de color (con su texto blanco) y las diapositivas de
+      fondo de color u oscuro se ven con sus colores.
+- [ ] Una tabla: las celdas blancas pasan a gris oscuro; la fila de cabecera de color se queda.
+- [ ] El cursor de texto se ve al escribir en un cuadro.
+- [ ] Botón Claro/Oscuro: al pasar a claro, todo vuelve a blanco.
+- [ ] Presentación (F5), exportar a PDF/PNG e imprimir salen con los colores originales (blanco).
+
 ## 2. Ratón
 - [ ] Clic en una forma para seleccionarla, arrastrar para moverla, tiradores para redimensionar y
       girar, doble clic para editar el texto.

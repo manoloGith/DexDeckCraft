@@ -18,6 +18,11 @@ fn main() {
             ..Default::default()
         };
         let app = dexdeckcraft::DeckApp::new(cc, &launch, services);
-        Box::new(craft_android::Shell::new(app).on_focus_lost(|a| a.focus_lost()).title(dexdeckcraft::DeckApp::title))
+        Box::new(
+            craft_android::Shell::new(app)
+                .on_focus_lost(|a| a.focus_lost())
+                .title(dexdeckcraft::DeckApp::title)
+                .on_theme_change(dexdeckcraft::on_theme_change),
+        )
     });
 }

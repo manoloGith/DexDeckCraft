@@ -16,6 +16,17 @@ pub(crate) mod android;
 use deckcraft_engine::Session;
 use deckcraft_ui_egui::{Services, SlideApp};
 
+/// The slides on craft-android's dark paper in the dark theme, and back to white in the light
+/// one ([`craft_android::Shell::on_theme_change`]), as the other Dex apps' pages. DeckCraft has
+/// no page colours of the user's to respect: the paper follows the theme. Only the editor's
+/// painting changes (the fork's `dark_paper`): slides on white paper turn dark grey with light
+/// grey ink; slides with a coloured background, coloured boxes and pictures keep their colours,
+/// and exports, printing, the slide show and the presentation itself are untouched.
+pub fn on_theme_change<A>(_: &mut A, dark: bool) {
+    let colors = dark.then_some((craft_android::paper::DARK_PAPER, craft_android::paper::LIGHT_INK));
+    deckcraft_ui_egui::dark_paper::set(colors);
+}
+
 /// What to start with.
 #[derive(Clone, Debug, Default)]
 pub struct Launch {

@@ -1,0 +1,1 @@
+Dark paper in the dark theme: white slides show on dark grey, as in the other Dex apps.

@@ -34,7 +34,7 @@ fn android_main(app: AndroidApp) {
             let deck = DeckApp::new(cc, &launch, services()).with_print(move |pdf, title| print(pdf, title, &print_dir));
             // craft-android's shell: the activity's mouse, keyboard and insets, Back as the close
             // button (DeckCraft asks about unsaved presentations), the title for DeX's taskbar.
-            Box::new(craft_android::Shell::new(deck).on_focus_lost(|d| d.focus_lost()).title(DeckApp::title))
+            Box::new(craft_android::Shell::new(deck).on_focus_lost(|d| d.focus_lost()).title(DeckApp::title).on_theme_change(crate::on_theme_change))
         },
     );
     // The window closed (DeckCraft allowed it, after asking about unsaved changes).
