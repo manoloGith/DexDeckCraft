@@ -65,7 +65,12 @@ vídeo, la presentación a pantalla completa y la impresión interceptada.
   escritorio. Se puede compilar con `CRAFT_FONTS_DIR` para incrustarlas.
 - **Tema.** DeckCraft no tiene opción «como el sistema»: se toma el del sistema en el primer
   arranque y después manda el botón Claro/Oscuro de la barra de título.
-- **Interfaz en inglés**, como DeckCraft.
+- **Interfaz en inglés**, como DeckCraft. Se espera a la traducción de storytold en vez de
+  traducir en el fork (chocaría en cada rebase): issue 1086 (español), PR 1488 (idiomas con
+  craft-i18n, como WordCraft) y PR 110 (español entre otros) de storytold/deckcraft. Cuando esté
+  en su `main`: `scripts/sync-upstream.sh`, añadir `scripts/fetch-build-inputs.sh` con craft-i18n
+  (copiar el de DexWordCraft) y pasar a DeckCraft el idioma de Android (`LANG`, como
+  `set_language` en DexWordCraft).
 - **«Acerca de»** es el de DeckCraft, sin cambios.
 - **Papel oscuro (0.1.1).** Con el tema oscuro, las diapositivas de fondo blanco se ven en gris
   oscuro con texto gris claro, solo en el editor. Sigue al botón Claro/Oscuro: no es una opción
