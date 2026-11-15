@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- DexDeckCraft's icon: a slide on a monitor (an original design, the same family as
+     DexPdfCraft's page on a monitor). Drawn inside the adaptive icon's 66 dp safe zone. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <!-- monitor -->
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="3.5" android:fillColor="#00000000"
+        android:pathData="M31,35h46a4,4 0 0 1 4,4v26a4,4 0 0 1 -4,4h-46a4,4 0 0 1 -4,-4v-26a4,4 0 0 1 4,-4z" />
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="3.5" android:strokeLineCap="round" android:fillColor="#00000000"
+        android:pathData="M46,78h16M54,69v9" />
+    <!-- slide: a white landscape card with a title line and a three-bar chart -->
+    <path android:fillColor="#FFFFFFFF" android:pathData="M36,31h36a2,2 0 0 1 2,2v24a2,2 0 0 1 -2,2h-36a2,2 0 0 1 -2,-2v-24a2,2 0 0 1 2,-2z" />
+    <path android:strokeColor="#FF8A4F00" android:strokeWidth="2.6" android:strokeLineCap="round" android:fillColor="#00000000"
+        android:pathData="M39.5,37h17" />
+    <path android:fillColor="#FFF2C879" android:pathData="M40,48h6v7h-6z" />
+    <path android:fillColor="#FFE8A013" android:pathData="M49,44h6v11h-6z" />
+    <path android:fillColor="#FFB86A00" android:pathData="M58,40h6v15h-6z" />
+    <path android:strokeColor="#FF8A4F00" android:strokeWidth="1.2" android:strokeLineCap="round" android:fillColor="#00000000"
+        android:pathData="M38,55.6h30" />
+</vector>
