@@ -1,0 +1,10 @@
+<p><b>DexDeckCraft</b> brings the desktop interface of <a href="https://github.com/storytold/deckcraft">DeckCraft</a>, an open-source presentation program written in Rust, to Android. It is made for <b>Samsung DeX</b> and Android's desktop windowing, with a mouse and a keyboard, and also works on tablets and phones.</p>
+<p><b>The whole DeckCraft interface</b>, laid out as on the desktop: the ribbon, the slide thumbnails, the notes, the Backstage view and its dialogs.</p>
+<ul>
+<li>Opens and saves PowerPoint presentations (pptx, ppsx, potx) and DeckCraft's own format</li>
+<li>Shapes, pictures, tables, charts, diagrams, themes and slide masters</li>
+<li>Transitions, animations, audio and video; full-screen slide show and Presenter View</li>
+<li>Exports to PDF, pictures and GIF, and prints with Android's print service</li>
+</ul>
+<p><b>Made for Android:</b> opens and saves with the system file picker (changes go back to the original file), "Open with" and "Share", drag and drop in DeX, a mouse with buttons, wheel and cursors, a hardware keyboard with its layout and shortcuts, copy and paste with other apps, and the on-screen keyboard on phones.</p>
+<p>No account, no ads, no telemetry. MIT or Apache-2.0. Thanks to DeckCraft and its authors, whose engine and interface this app is built on.</p>
