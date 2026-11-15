@@ -4,8 +4,6 @@
 
 mod audio;
 
-use std::future::Future;
-use std::path::PathBuf;
 use std::sync::Arc;
 use std::sync::mpsc::{Sender, channel};
 
@@ -51,35 +49,13 @@ fn print(pdf: &std::path::Path, title: &str, dir: &std::path::Path) {
     }
 }
 
-/// Wait for a picker's answer on a worker thread, then hand it to `then`. The picker itself must
-/// be started on the interface thread, which can't wait: the activity's pause waits for it.
-fn when_picked(picked: platform::pickers::Picked, then: impl FnOnce(Vec<PathBuf>) + Send + 'static) {
-    let spawned = std::thread::Builder::new().name("picker".into()).spawn(move || then(block_on(picked)));
-    if let Err(e) = spawned {
-        log::error!("dexdeckcraft: picker thread: {e}");
-    }
-}
-
-/// craft-android's picker futures block inside `poll` until the answer comes, so one poll is
-/// the whole wait.
-fn block_on<T>(future: impl Future<Output = T>) -> T {
-    let mut future = std::pin::pin!(future);
-    let mut cx = std::task::Context::from_waker(std::task::Waker::noop());
-    loop {
-        if let std::task::Poll::Ready(value) = future.as_mut().poll(&mut cx) {
-            return value;
-        }
-        std::thread::yield_now();
-    }
-}
-
 /// A picker's answer for DeckCraft's `Services::picked_later`: the chosen path, or an empty one
 /// for a dismissed picker, so DeckCraft forgets what asked for it.
-fn answer(picked: platform::pickers::Picked, later: Sender<String>) {
-    when_picked(picked, move |paths| {
+/// (craft-android's `pick_then` waits for it on a worker thread and wakes the interface.)
+fn answer(kind: PickKind, filters: &[(String, Vec<String>)], name: Option<&str>, later: Sender<String>) {
+    platform::pickers::pick_then(kind, None, filters, name, move |paths| {
         let path = paths.first().and_then(|p| p.to_str()).unwrap_or_default().to_owned();
         let _ = later.send(path);
-        platform::events::wake();
     });
 }
 
@@ -93,7 +69,7 @@ fn services() -> Services {
         pick_open: Some(Box::new(move |purpose: &str| {
             let (name, extensions) = crate::open_filters(purpose);
             let filters = [(name.to_owned(), extensions.iter().map(|e| (*e).to_owned()).collect())];
-            answer(platform::pickers::pick(PickKind::OpenFile, None, &filters, None), later.clone());
+            answer(PickKind::OpenFile, &filters, None, later.clone());
             None
         })),
         // Save As and the exports: the system's Save picker, offering the suggested name's type.
@@ -101,7 +77,7 @@ fn services() -> Services {
             let extension = crate::save_extension(suggested);
             let name = std::path::Path::new(suggested).file_name().and_then(std::ffi::OsStr::to_str).unwrap_or("Presentation.deckcraft");
             let filters = [(extension.to_uppercase(), vec![extension])];
-            answer(platform::pickers::pick(PickKind::Save, None, &filters, Some(name)), save_later.clone());
+            answer(PickKind::Save, &filters, Some(name), save_later.clone());
             None
         })),
         picked_later: Some(picked_later),
